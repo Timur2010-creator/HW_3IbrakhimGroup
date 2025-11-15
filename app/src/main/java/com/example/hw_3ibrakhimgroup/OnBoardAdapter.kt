@@ -1,6 +1,7 @@
 package com.example.hw_3ibrakhimgroup
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_3ibrakhimgroup.databinding.ItemOnBoardBinding
@@ -10,7 +11,13 @@ class OnBoardAdapter(val onBoardList : List<OnBoardModel>): RecyclerView.Adapter
         parent: ViewGroup,
         viewType: Int
     ): OnBoardViewHolder {
-        return OnBoardViewHolder(ItemOnBoardBinding.inflate(LayoutInflater.from(parent.context),parent,false))
+        return OnBoardViewHolder(
+            ItemOnBoardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(
@@ -24,12 +31,15 @@ class OnBoardAdapter(val onBoardList : List<OnBoardModel>): RecyclerView.Adapter
         return onBoardList.size;
     }
 
-    class OnBoardViewHolder(private val binding: ItemOnBoardBinding): RecyclerView.ViewHolder(binding.root){
-        fun onBind(onBoardModel: OnBoardModel){
+    inner class OnBoardViewHolder(private val binding: ItemOnBoardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(onBoardModel: OnBoardModel) {
             binding.apply {
-
-                tvTitle.text = OnBoardModel.title
-                tvDesc.text = OnBoardModel.desc
+                tvTitle.text = onBoardModel.title
+                tvDesc.text = onBoardModel.desc
+            }
+            if (adapterPosition == onBoardList.size -1) {
+                binding.tvSkip.visibility = View.INVISIBLE
             }
         }
     }

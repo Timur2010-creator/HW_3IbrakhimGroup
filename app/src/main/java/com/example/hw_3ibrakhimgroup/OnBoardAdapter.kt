@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_3ibrakhimgroup.databinding.ItemOnBoardBinding
 
-class OnBoardAdapter(val onBoardList : List<OnBoardModel>): RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
+class OnBoardAdapter(val onBoardList : List<OnBoardModel>,val onStart:()-> Unit,val onSkip:(Int)-> Unit):
+    RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -38,8 +39,16 @@ class OnBoardAdapter(val onBoardList : List<OnBoardModel>): RecyclerView.Adapter
                 tvTitle.text = onBoardModel.title
                 tvDesc.text = onBoardModel.desc
             }
+            binding.tvSkip.setOnClickListener {
+                onSkip(position)
+            }
+            binding.btnStart.setOnClickListener {
+                onStart()
+            }
             if (adapterPosition == onBoardList.size -1) {
                 binding.tvSkip.visibility = View.INVISIBLE
+            }else{
+                binding.btnStart.visibility = View.INVISIBLE
             }
         }
     }

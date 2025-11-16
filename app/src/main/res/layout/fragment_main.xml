@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OnBoardFragment">
+    tools:context=".MainFragment">
 
-
-  <androidx.viewpager2.widget.ViewPager2
-      android:id="@+id/vp_notes"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent" />
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

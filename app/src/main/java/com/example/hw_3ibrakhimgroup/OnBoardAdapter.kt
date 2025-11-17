@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw_3ibrakhimgroup.databinding.ItemOnBoardBinding
 
-class OnBoardAdapter(val onBoardList : List<OnBoardModel>,val onStart:()-> Unit,val onSkip:(Int)-> Unit):
+class OnBoardAdapter(val onBoardList : List<OnBoardModel>,val onStart:()-> Unit,val onSkip:()-> Unit):
     RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -38,18 +38,19 @@ class OnBoardAdapter(val onBoardList : List<OnBoardModel>,val onStart:()-> Unit,
             binding.apply {
                 tvTitle.text = onBoardModel.title
                 tvDesc.text = onBoardModel.desc
+                image.setAnimation(onBoardModel.path)
             }
-            binding.tvSkip.setOnClickListener {
-                onSkip(position)
-            }
-            binding.btnStart.setOnClickListener {
-                onStart()
-            }
-            if (adapterPosition == onBoardList.size -1) {
+            if (absoluteAdapterPosition == onBoardList.size -1) {
                 binding.tvSkip.visibility = View.INVISIBLE
+                binding.btnStart.setOnClickListener {
+                    onStart()
+                }
             }else{
                 binding.btnStart.visibility = View.INVISIBLE
+                binding.tvSkip.setOnClickListener {
+                    onSkip()
+                }
             }
-        }
-    }
-}
+                    }
+                }
+            }

@@ -60,6 +60,7 @@ dependencies {
     //DotsIndicator
     implementation("com.tbuonomo:dotsindicator:5.1.0")
 }
+//Lottie Animation
 dependencies {
 implementation("com.airbnb.android:lottie:6.0.0")
 }

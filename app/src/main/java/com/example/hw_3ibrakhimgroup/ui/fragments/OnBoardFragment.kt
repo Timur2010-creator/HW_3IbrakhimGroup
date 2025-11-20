@@ -1,13 +1,19 @@
-package com.example.hw_3ibrakhimgroup
+package com.example.hw_3ibrakhimgroup.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
+import com.example.hw_3ibrakhimgroup.App
+import com.example.hw_3ibrakhimgroup.ui.adapters.OnBoardAdapter
+import com.example.hw_3ibrakhimgroup.model.OnBoardModel
+import com.example.hw_3ibrakhimgroup.R
 import com.example.hw_3ibrakhimgroup.databinding.FragmentOnBoardBinding
+import com.example.hw_3ibrakhimgroup.utils.PreferenceHelper
 
 class OnBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
@@ -16,21 +22,32 @@ class OnBoardFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        if (!App.sharedPreferences.isFirstVisit){
+            val navOptions = NavOptions.Builder()
+                .setPopUpTo(R.id.onboardFragment,true)
+                .build()
+            findNavController().navigate(R.id.action_onboardFragment_to_googleAuthFragment
+                ,null,navOptions)
+        }
         binding = FragmentOnBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = OnBoardAdapter( getOnBoardList(),::onClickStart,::onSkip)
+        adapter = OnBoardAdapter(getOnBoardList(), ::onClickStart, ::onSkip)
         binding.vpNotes.adapter = adapter
         binding.dotsIndicator.attachTo(binding.vpNotes)
     }
+
     private fun onClickStart(){
         val navOptions = NavOptions.Builder()
-            .setPopUpTo(R.id.OnBoardFragment,true)
+            .setPopUpTo(R.id.onboardFragment,true)
             .build()
-        findNavController().navigate(R.id.action_onBoardFragment_to_mainFragment,null,navOptions)
+        App.sharedPreferences.isFirstVisit=false
+        Log.d("ololo", "onClickStart:${  App.sharedPreferences.isFirstVisit} ")
+        findNavController().navigate(R.id.action_onboardFragment_to_googleAuthFragment
+            ,null,navOptions)
     }
     private fun onSkip(){
         binding.vpNotes.setCurrentItem(2,true)

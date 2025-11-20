@@ -1,4 +1,4 @@
-package com.example.hw_3ibrakhimgroup
+package com.example.hw_3ibrakhimgroup.model
 
 data class OnBoardModel(
     val title: String,

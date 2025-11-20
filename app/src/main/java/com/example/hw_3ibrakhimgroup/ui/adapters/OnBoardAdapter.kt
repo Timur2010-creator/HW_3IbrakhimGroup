@@ -1,12 +1,13 @@
-package com.example.hw_3ibrakhimgroup
+package com.example.hw_3ibrakhimgroup.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.hw_3ibrakhimgroup.model.OnBoardModel
 import com.example.hw_3ibrakhimgroup.databinding.ItemOnBoardBinding
 
-class OnBoardAdapter(val onBoardList : List<OnBoardModel>,val onStart:()-> Unit,val onSkip:()-> Unit):
+class OnBoardAdapter(val onBoardList : List<OnBoardModel>, val onStart:()-> Unit, val onSkip:()-> Unit):
     RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,

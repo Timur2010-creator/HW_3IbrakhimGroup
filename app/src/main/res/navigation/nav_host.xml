@@ -2,24 +2,26 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_host"
-    app:startDestination="@id/OnBoardFragment">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onboardFragment">
 
     <fragment
-        android:id="@+id/OnBoardFragment"
-        android:name="com.example.hw_3ibrakhimgroup.OnBoardFragment"
-        android:label="Fragment_on_board"
-        tools:layout="@layout/fragment_on_board" />
-
-    <action
-        android:id="@+id/action_onBoardFragment_to_mainFragment"
-        app:destination="@id/mainFragment"
-        app:popUpTo="@id/OnBoardFragment"
-        app:popUpToInclusive="true"/>
+        android:id="@+id/onboardFragment"
+        android:name="com.example.hw_3ibrakhimgroup.ui.fragments.OnBoardFragment"
+        android:label="fragment_onboard"
+        tools:layout="@layout/fragment_on_board" >
+        <action
+            android:id="@+id/action_onboardFragment_to_googleAuthFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/onboardFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.hw_3ibrakhimgroup.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        android:name="com.example.hw_3ibrakhimgroup.ui.fragments.MainFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_main" >
+
+    </fragment>
 
 </navigation>

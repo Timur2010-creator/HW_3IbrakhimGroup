@@ -40,6 +40,7 @@ android {
     }
 
     dependencies {
+
         implementation(libs.androidx.core.ktx)
         implementation(libs.androidx.appcompat)
         implementation(libs.material)
@@ -50,7 +51,16 @@ android {
         androidTestImplementation(libs.androidx.espresso.core)
     }
 }
+
+//NavHost
 dependencies {
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    //DotsIndicator
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
+}
+//Lottie Animation
+dependencies {
+implementation("com.airbnb.android:lottie:6.0.0")
 }

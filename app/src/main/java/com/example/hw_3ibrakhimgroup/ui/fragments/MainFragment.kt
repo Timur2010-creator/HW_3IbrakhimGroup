@@ -1,10 +1,11 @@
-package com.example.hw_3ibrakhimgroup
+package com.example.hw_3ibrakhimgroup.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import com.example.hw_3ibrakhimgroup.R
 
 class MainFragment : Fragment() {
 
